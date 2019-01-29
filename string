@@ -1,0 +1,28 @@
+from collections import defaultdict
+
+def sortfilter(s):
+    b=sorted(set(s))
+    return "".join(b)
+    
+def new_dic(d):
+    mydict=defaultdict(set)
+    for w in d:
+        key=sortfilter(w)
+        mydict[key].add(w)
+    return mydict
+
+def findlongestword(s,d):
+    mydict=new_dic(d)
+    key=sortfilter(s)
+    maxlen=0
+    if key in mydict.keys():
+        for i in mydict[key]:
+            if len(i)>maxlen:
+                maxlen=len(i)
+                result=i
+    return result
+    
+s="acb"
+d=["water","append","house","computer","abcabcabc","bcacc"]    
+print(findlongestword(s,d)) 
+        
