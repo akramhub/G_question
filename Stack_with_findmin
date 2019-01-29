@@ -1,0 +1,41 @@
+class stack:
+    
+    def __init__(self):
+        self.item=[]
+        self.minvalue=1000000
+        self.popflag=False
+        
+    def push(self,value):
+        self.item.append(value)
+        if value<=self.minvalue:
+            self.minvalue=value
+        
+    def pop(self):
+        temp=self.item[-1]
+        del self.item[-1] 
+        if temp==self.minvalue:
+            self.popflag=True
+            self.findMin()
+            
+        return temp
+        
+    def peak(self):
+        return self.item[-1]
+    def isEmpty(self):
+        return self.item==[]
+    def findMin(self):
+        if self.popflag:
+            l=self.item
+            l.sort()
+            self.minvalue=l[0]
+            self.popflag=False  
+        return self.minvalue
+        
+s=stack()
+s.push(20)
+s.push(4)
+s.push(90)
+s.push(6)
+s.pop()
+print(s.findMin())
+print(s.isEmpty())
