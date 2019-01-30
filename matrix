@@ -1,0 +1,36 @@
+
+import numpy
+
+
+def findlocation(l,low,high,val):
+    count = 0
+    
+    while(high - low > 1 ):
+        mid = (high+low)//2
+        print (mid,high,low)
+        if( val<l[mid]):
+            high = mid
+        else:
+            low = mid
+    
+    if val == l[low]:
+        return low    
+    return high
+        
+a1=list(range(0,110))
+A=numpy.reshape(a1,(10,11))
+m=len(A[0])
+n=len(A)
+lc=list(A[:,10])
+high=len(lc)-1
+val=86.5
+row=findlocation(lc,0,high,val)
+lr=list(A[row,:])
+high=len(lr)-1
+
+col=findlocation(lr,0,high,val)
+if A[row][col]==val:
+    print ("yes")
+else:
+    print("no")
+print(row, col,"------------")
