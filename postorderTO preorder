@@ -1,0 +1,16 @@
+postorder=[35, 30, 100, 80 ,40]
+n=len(postorder)
+def conver_postorderTOpreorder(postorder,n,preorder):
+    if postorder:
+        rootvalue=postorder[-1]
+        preorder.append(rootvalue)
+        print (rootvalue)
+        
+        i=-2
+        while( -i<=len(postorder) and postorder[i]>rootvalue ):
+            i=i-1
+        conver_postorderTOpreorder(postorder[0:n+i+1],n+i+1,preorder) 
+        conver_postorderTOpreorder(postorder[n+i+1:n-1],-i-2,preorder)
+        
+    return preorder
+print (conver_postorderTOpreorder(postorder,n,[]))
