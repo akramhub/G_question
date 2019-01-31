@@ -1,0 +1,7 @@
+def findMaxsumTree(node):
+    if node:
+        if findMaxsumTree(node.left)>findMaxsumTree(node.right):
+            return findMaxsumTree(node.left)+node.val
+        else:
+            return findMaxsumTree(node.right)+node.val
+    return 0 
