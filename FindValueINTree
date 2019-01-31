@@ -1,0 +1,6 @@
+def findvalue(node,value):
+    if node:
+        if node.val==value:
+            return True
+        else:
+            return (findvalue(node.left,value) or findvalue(node.right,value))  
