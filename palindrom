@@ -1,0 +1,8 @@
+def makePalindrome(word):
+    n=len(word)
+    if n==0: return 0
+    if n==1: return 0
+    if word[0]==word[-1]:
+       return makePalindrome(word[1:n-1])
+    else:
+        return 1+min(makePalindrome(word[1:n]),makePalindrome(word[0:n-1]))
