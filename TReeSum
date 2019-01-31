@@ -1,0 +1,5 @@
+
+def findsumTree(node):
+    if node:
+        return node.val+findsumTree(node.left)+findsumTree(node.right)
+    return 0  
