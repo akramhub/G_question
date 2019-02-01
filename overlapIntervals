@@ -1,0 +1,37 @@
+A=[(1,2),(3,4),(5,6),(7,8)]
+B=[(0,1),(1,3),(4,5),(7,9),(10,11)]
+
+def findoverlaps(A,B):
+    overlaps=[]
+    i=0
+    j=0
+    c=0 #number of steps
+    while(i<len(A) and j<len(B)):
+        if checkoverlap(A[i],B[j]):
+            overlaps.append([A[i],B[j]])
+            j=j+1
+            c+=1
+        else:
+            if A[i][1]<=B[j][0]:
+                if checkoverlap(A[i],B[j]):
+                    i+=1
+                    j-=1
+                    c+=1
+                else:
+                    i+=1
+                    c+=1
+            else:
+                j+=1
+                c+=1
+    return c, overlaps   
+        
+        
+    
+    
+    
+            
+def checkoverlap(a,b):
+    if (a[1]>b[0] and a[1]<=b[1]) or (b[1]>a[0] and b[1]<=a[1]):
+        return True
+    
+print findoverlaps(A,B)   
