@@ -1,0 +1,13 @@
+graph={1:[2,3,4,7],2:[1,3,5,8],3:[1,2,6,9],4:[1,5,6,7],5:[2,4,6,8],6:[3,5,4,9],7:[1,4,8,9],8:[2,5,7,9],9:[3,6,7,8]}
+
+def find7digits(graph, digits_branch,total_digits):
+    for c in graph[digits_branch[-1]]:
+        new_digits = digits_branch + [c]
+        if len(new_digits) == 7:
+            total_digits.append(new_digits)
+        else:
+            find7digits(graph,new_digits,total_digits)
+
+total_digits =[]
+find7digits(graph,[4],total_digits)
+print (len(total_digits))
