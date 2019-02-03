@@ -1,0 +1,44 @@
+s="(())()(()"
+print( s[0:0])
+
+def longestValidParentheses(s):
+    maxl=0
+    tmps=''
+    while(s!=tmps):
+        i=0
+        tmps=s
+        print ("tmps",tmps)
+        while(i<len(s)-1):
+            if s[i]=="(":
+                print(i) 
+                tmp=i
+                while(i<len(s)-2 and s[i+1]=="1" ):
+                    i=i+1
+                    print(i,"iiii")
+                print (s[i+1])
+                if s[i+1]==")":
+                    
+                    s=s[0:tmp]+"1"*(i+2-tmp)+s[i+2:]
+                    print("yes",i+2,tmp,s)
+                    
+                    
+            i=i+1
+        print ("s",s)
+    c=0
+    maxl=1
+    i=0
+    while(i<len(s)):
+        if s[i]!="1":
+            if c>maxl:
+                maxl=c 
+            c=0
+        else:
+            c+=1 
+        i+=1
+                
+    print (maxl,"max1")
+    return maxl        
+        
+            
+  
+print (longestValidParentheses( s))
